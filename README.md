@@ -8,6 +8,7 @@ This is a quick working prototype of what it would be like to merge [Force](git@
 brew install nvm
 nvm install 6
 nvm alias default 6
+touch .env # Find the force-merge.env secure note in 1Password
 npm i
 npm start
 ```

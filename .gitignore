@@ -14,7 +14,8 @@ logs
 results
 npm-debug.log
 .DS_Store
-public/assets
+desktop/public/assets
+mobile/public/assets
 dump.rdb
 /node_modules
 coffeelint.json
