@@ -1,0 +1,24 @@
+extends ../../../components/main_layout/templates/index
+
+block head
+  include meta
+
+append locals
+  - assetPackage = 'auction'
+  - bodyClass = bodyClass + ' body-no-margins'
+
+block body
+  .auction-page
+    include banner
+    .main-layout-container.responsive-layout-container
+      include header
+
+      .auction-my-active-bids
+
+      section.auction-artworks-container.js-auction-artworks-section
+        - artworks = artworks.models
+        include ../../../components/auction_artworks/templates/index
+
+      section.below-auction-artworks
+        include associated_auction
+        include footer

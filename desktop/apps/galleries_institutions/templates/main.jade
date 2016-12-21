@@ -1,0 +1,31 @@
+extends ../../../components/main_layout/templates/index
+include ../../../components/util/activator
+
+block head
+  include meta
+
+append locals
+  - assetPackage = 'galleries_institutions'
+
+block body
+  - var pluralType = type === 'gallery' ? 'Galleries' : 'Institutions'
+  .galleries-institutions-page.main-layout-container
+    header.galleries-institutions-header
+      h1.galleries-institutions-headline
+        | Browse #{pluralType}
+
+      nav.galleries-institutions-subnav
+        if showBrowseLink
+          a.fine-faux-underline( href=pluralType.toLowerCase() )
+            | Browse
+        if showAZLink
+          a.fine-faux-underline( href="/#{pluralType.toLowerCase()}-a-z" )
+            | A–Z
+        a.fine-faux-underline( href='/#{type}-partnerships' )
+          | Partner with Artsy
+        if type === 'gallery'
+          a.fine-faux-underline( href='/gallery-insights' )
+            | Gallery Insights
+
+    block content
+    include ./footer

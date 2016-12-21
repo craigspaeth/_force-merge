@@ -1,0 +1,28 @@
+#main-layout-search-bar-container( itemscope, itemtype='http://schema.org/WebSite' )
+  form(
+    action='/search'
+    method='GET'
+    itemprop='potentialAction'
+    itemscope
+    itemtype='http://schema.org/SearchAction'
+  )
+
+    input#main-layout-search-bar-input.bordered-input(
+      placeholder='Search…'
+      tabindex='1'
+      itemprop='query-input'
+      type='text'
+      name='q'
+      value= term
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      required
+    )
+
+    a#main-layout-search-bar-icon.icon-search
+
+    #main-layout-search-bar-spinner: .loading-spinner-small
+    #main-layout-search-bar-feedback.autocomplete-feedback
+      //- Rendered client-side

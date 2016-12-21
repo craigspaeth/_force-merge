@@ -1,0 +1,24 @@
+extends ../../components/main_layout/templates/index
+
+block head
+  case page.get('id')
+    when 'terms'
+      include meta/terms
+    when 'past-terms'
+      include meta/terms
+    when 'past-terms-10-29-12'
+      include meta/terms
+    when 'privacy'
+      include meta/privacy
+    when 'security'
+      include meta/security
+    when 'press'
+      include meta/press
+    default
+      include meta/default
+
+append locals
+  - assetPackage = 'page'
+
+block body
+  #page-markdown-content!= page.mdToHtml('content')

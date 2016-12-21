@@ -1,0 +1,12 @@
+extends ../../../components/main_layout/templates/index
+include ../../../components/article_figure/mixin
+
+block head
+  include meta/articles
+
+append locals
+  - assetPackage = 'articles'
+  - bodyClass = bodyClass + ' body-articles'
+
+block body
+  include full_feed

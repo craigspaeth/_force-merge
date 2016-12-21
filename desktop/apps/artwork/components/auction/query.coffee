@@ -1,0 +1,41 @@
+module.exports = """
+  fragment auction on Artwork {
+    id
+    href
+    sale_message
+    is_sold
+    is_buy_nowable
+    is_in_auction
+    sale {
+      id
+      name
+      is_open
+      is_live_open
+      is_preview
+      is_closed
+      is_auction
+      is_auction_promo
+      is_with_buyers_premium
+    }
+    sale_artwork {
+      id
+      reserve_status
+      reserve_message
+      estimate
+      is_biddable
+      symbol
+      bid_increments
+      current_bid {
+        display
+        cents
+      }
+      minimum_next_bid {
+        display
+        cents
+      }
+      counts {
+        bidder_positions
+      }
+    }
+  }
+"""

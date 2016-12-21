@@ -1,0 +1,73 @@
+@require '../stylus_lib'
+
+header-font-size = garamond-s-body-font-size
+value-font-size = avant-garde-l-headline-font-size
+small-font-size = 9px
+closed-font-size = avant-garde-body-font-size
+closed-border-size = 2px
+clock-height = (header-font-size + (value-font-size * 2) + small-font-size)
+closed-padding = (((clock-height - closed-font-size) - (closed-border-size * 2)) / 2)
+
+.clock
+  display inline-block
+  height clock-height
+  text-align left
+
+.clock-header
+  font-size header-font-size
+  line-height 1
+
+.clock-value
+  avant-garde()
+  prevent-content-shift()
+  list-style none
+  font-size value-font-size
+  line-height 2
+  li
+    display inline-block
+    vertical-align top
+    inline-block-margins(3px)
+
+    small
+      display block
+      color transparify(gray-dark-color, black)
+      font-size small-font-size
+      line-height 1
+
+.clock-closed
+  position relative
+  padding closed-padding 0
+  avant-garde()
+  font-size closed-font-size
+  line-height 1
+  border-top 2px solid black
+  border-bottom @border-top
+  text-align center
+  // Often overwritten unintentionally
+  text-transform uppercase !important
+
+.white-overlay-clock
+  color white
+  left 50%
+  top 50%
+  display inline-block
+  position absolute
+  transform translate(-50%, -50%)
+  z-index 1
+  .clock-header.clock-closed
+    avant-garde-size('xl-headline')
+    color white
+    border 0
+    letter-spacing 2px
+  .clock
+    text-align center
+  .clock-header
+    margin-bottom 5px
+    avant-garde-size('s-headline')
+  .clock-days, .clock-hours, .clock-minutes, .clock-seconds
+    avant-garde-size('xl-headline')
+    margin 0 12px
+    small
+      avant-garde-size('s-headline')
+      color white
+      margin-top 5px

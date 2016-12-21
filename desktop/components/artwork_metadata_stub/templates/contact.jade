@@ -1,0 +1,17 @@
+if artwork.is_in_auction
+  if artwork.is_biddable
+    .artwork-metadata-stub__contact.artwork-metadata-stub__line.artwork-metadata-stub__bid-now
+      a(href= artwork.href)
+        | Bid now
+  else
+    .artwork-metadata-stub__contact.artwork-metadata-stub__line
+      | Auction closed
+else if artwork.is_inquireable
+  .artwork-metadata-stub__contact.artwork-metadata-stub__line
+    a(
+      class='analytics-artwork-contact-seller'
+      href= artwork.href
+      data-artwork_id= artwork._id
+      data-context_type='artwork feed item'
+    )
+      | Contact #{artwork.partner.type.toLowerCase()}

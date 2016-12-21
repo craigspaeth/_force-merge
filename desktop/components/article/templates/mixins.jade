@@ -1,0 +1,140 @@
+mixin author-date
+  .article-author-date
+    .article-author(class= article.get('contributing_authors').length > 0 ? 'has-contributing-author' : '')
+      = article.related().author.get('name')
+    if article.get('contributing_authors').length > 0
+      .article-contributing-author
+        = "By " + article.byline()
+    .article-date
+      = article.date('published_at').format('MMM Do, YYYY h:mm a')
+
+mixin video(video)
+  .article-video-container
+    if video.cover_image_url
+      .article-video-cover-image(
+        style=("background-image: url(#{resize(video.cover_image_url, { width: 1100 })})")
+      )
+        button.article-video-play-button
+          .article-video-play-button-caret
+    .article-video
+      != embed(video.url, { query: { title: 0, portrait: 0, badge: 0, byline: 0, showinfo: 0, rel: 0, controls: 2, modestbranding: 1, iv_load_policy: 3, color: "E5E5E5" } })
+
+mixin image(image)
+  figure.article-section-image
+    img( src=resize(image.url, { width: 1100 }) )
+    if image.caption
+      figcaption!= image.caption
+
+mixin fullscreen(article)
+  figure.article-fullscreen( class= article.get('is_super_article') ? 'article-sa-fullscreen' : '' )
+    if article.get('hero_section').background_url
+      .article-fullscreen-overlay
+      video.article-fullscreen-video-player( src=article.get('hero_section').background_url, autoplay=true, controls=false, loop=true)
+    else if article.get('hero_section').background_image_url
+      .article-fullscreen-overlay
+      img.article-fullscreen-image(
+        src=resize(article.get('hero_section').background_image_url, { height: 1250, width: 1250 })
+      )
+
+    .article-fullscreen-down-arrow
+      a.icon-chevron-down
+
+    if article.get('is_super_article')
+      .main-layout-container.article-sa-fullscreen-logos
+        .article-sa-primary-logos
+          a( href="/" ).article-sa-artsy-logo.icon-logotype
+          if article.get('super_article').partner_logo && article.get('super_article').partner_logo_link
+            .article-sa-plus-container
+              .article-sa-plus.icon-close
+              .article-sa-primary-logo
+                a( href=article.get('super_article').partner_logo_link )
+                  img( src=article.get('super_article').partner_fullscreen_header_logo )
+        .article-share-fixed-fullscreen(data-id=article.get('id'))
+          +share-fixed( (article.get('share_description') || article.get('thumbnail_title')), article.get('thumbnail_image'), article.fullHref())
+
+    .main-layout-container.article-fullscreen-text
+      .article-fullscreen-text-overlay
+        if article.get('hero_section').title
+          h1.large-garamond-header.article-fullscreen-title= article.get('title')
+        if !article.get('is_super_article')
+          +author-date
+         if article.get('hero_section').intro
+          .article-lead-paragraph-container
+            .article-lead-paragraph.article-fullscreen-intro
+              != article.get('hero_section').intro
+
+mixin pullquote(section)
+  .article-section-callout
+    if !section.hide_image && section.thumbnail_url
+      img( src=section.thumbnail_url )
+    .article-section-callout-text(
+      class=("article-section-callout-pullquote #{section.hide_image ? 'article-section-callout-no-image' : ''}")
+    )
+      if section.text
+        .article-section-callout-title= section.text
+
+mixin toc(section)
+  .article-section-toc-header Table Of Contents
+  .article-section-toc-links
+    each link in section.links
+      .article-section-toc-link
+        a(href="##{link.value}")= link.name
+
+mixin imageSet(section)
+  .article-section-image-set__images
+    for item, i in section.images.slice(0,3)
+      .article-section-image-set__image-container.hoverable-image-link( data-index=i )
+        - var image = resize( (item.image || item.url || ''), {height: 150} )
+        img.hoverable-image(src=image)
+  .article-section-image-set__remaining
+    .article-section-image-set__icon( data-total=section.images.length class= section.images.length > 9 ? 'is-double-digit' : '')
+      include ../../main_layout/public/icons/image-set.svg
+    .article-section-image-set__text Enter Slideshow
+
+mixin topStories
+  .article-section-top-stories
+    .article-section-top-stories__headline Top Stories on Artsy
+    ul.article-section-top-stories__list
+      for article in sd.PARSELY_ARTICLES.slice(0,3)
+        li.article-section-top-stories__item
+          a( href=article.url )
+            img( src=crop(article.image_url, { height: 180, width: 240 }) )
+            p= article.title
+
+mixin embed(section)
+  .article-embed-container
+    iframe(src=section.url height=section.height data-d-height=section.height data-m-height=section.mobile_height scrolling='no' frameborder='0')
+
+mixin artwork(artwork)
+  li( data-id=artwork.id )
+    figure.artwork-item
+      .artwork-item-image-container
+        a.artwork-item-image-link( href='/artwork/' + artwork.slug )
+          .artwork-item-image
+            img( src=artwork.image )
+      figcaption.artwork-item-caption
+        if artwork.artist && artwork.artist.name
+          p.artwork-item-artist.artwork-item-overflow
+            if artwork.artist.slug
+              a(href='/artist/' + artwork.artist.slug )= artwork.artist.name
+            else
+              |= artwork.artist.name
+        if artwork.title
+          p.artwork-item-title.artwork-item-overflow
+            if artwork.slug
+              a(href='/artwork/' + artwork.slug)
+                em= artwork.title
+                if artwork.date
+                  | ,&nbsp
+                  = artwork.date
+            else
+              em= artwork.title
+              if artwork.date
+                | ,&nbsp
+                = artwork.date
+        if artwork.partner && artwork.partner.name
+          p.artwork-item-partner.artwork-item-overflow
+            if artwork.partner.slug
+              a(href='/' + artwork.partner.slug)= artwork.partner.name
+            else
+              = artwork.partner.name

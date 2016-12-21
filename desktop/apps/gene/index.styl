@@ -1,0 +1,62 @@
+@require '../../components/stylus_lib'
+
+.gene-page
+  padding 20px 0
+
+.gene-header
+  position relative
+  text-align center
+.gene-header-headline
+  margin 10px 0
+  avant-garde-size('xl-headline')
+.gene-header-follow-button
+  margin 10px 0
+
+.gene-share-buttons
+  position absolute
+  top 0
+  right 0
+  .icon-pinterest
+    display none
+
+.gene-blurb
+  > p
+    block-margins(20px)
+    > a
+      fine-faux-underline()
+
+#gene-artists
+  position relative
+  min-height 400px
+  margin-bottom 100px
+
+#gene-filter
+  margin-top 30px
+
+#gene-filter-all-artists
+  margin-right 30px
+
+#gene-filter-nav
+  margin-bottom 40px
+  padding-top 20px
+  text-align center
+  border-top 1px solid gray-lighter-color
+
+.filter-fixed-header #gene-filter-nav
+  margin 0
+  padding 15px 0
+  border-bottom 1px solid gray-lighter-color
+  border-top 0
+
+#gene-artworks
+  display none
+
+#gene-filter[data-state='artworks']
+  #gene-artworks
+    display block
+  #gene-artists
+    display none
+
+#gene-filter[data-state='artist']
+  #gene-filter-all-artists
+    color purple-color
