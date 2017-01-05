@@ -21,7 +21,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node  -r dotenv/config ."
+    "start": "node  -r dotenv/config .",
+    "deploy": "sh migrate.sh && git add . && git commit -a -m 'deploying' && git push --force git@heroku.com:force-merge.git"
   },
   "repository": {
     "type": "git",
