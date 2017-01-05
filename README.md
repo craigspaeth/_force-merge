@@ -18,3 +18,6 @@ npm start
 - Script to check Force & MG package.json dependencies and updates this package.json + installs
 - Deploy to separate heroku and get config straight
 - Swap DNS to point to new app
+- Add Danger back in
+- Set up tests with Semaphore
+- Merge S3 buckets between MG & Force
