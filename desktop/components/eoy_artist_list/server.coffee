@@ -1,4 +1,4 @@
-cache = require '../../../lib/cache.coffee'
+cache = require '../../lib/cache.coffee'
 JSONPage = require '../json_page/index.coffee'
 Q = require 'bluebird-q'
 
@@ -14,4 +14,4 @@ module.exports = ->
         return reject(err) if err
         cache.set "eoy-2016", JSON.stringify(data)
         resolve(data)
-
+      

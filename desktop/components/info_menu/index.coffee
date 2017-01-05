@@ -1,7 +1,7 @@
 _ = require 'underscore'
 Q = require 'bluebird-q'
 Backbone = require 'backbone'
-cache = require '../../../lib/cache'
+cache = require '../../lib/cache'
 FairEvents = require '../../collections/fair_events'
 Articles = require '../../collections/articles'
 { API_URL } = require('sharify').data

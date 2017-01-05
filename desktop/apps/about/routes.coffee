@@ -1,7 +1,7 @@
 _ = require 'underscore'
 twilio = require 'twilio'
 { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_NUMBER, IPHONE_APP_COPY } = require '../../config'
-cache = require '../../../lib/cache'
+cache = require '../../lib/cache'
 resizer = require '../../components/resizer'
 JSONPage = require '../../components/json_page'
 

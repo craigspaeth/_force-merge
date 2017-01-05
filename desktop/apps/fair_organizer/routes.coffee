@@ -5,7 +5,7 @@ Profile = require '../../models/profile.coffee'
 FairOrganizer = require '../../models/fair_organizer.coffee'
 Fairs = require '../../collections/fairs.coffee'
 Fair = require '../../models/fair.coffee'
-cache = require '../../../lib/cache'
+cache = require '../../lib/cache'
 OrderedSets = require '../../collections/ordered_sets'
 Articles = require '../../collections/articles'
 

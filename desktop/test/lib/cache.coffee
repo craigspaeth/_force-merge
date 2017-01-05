@@ -1,5 +1,5 @@
 sinon = require 'sinon'
-cache = require '../../../lib/cache'
+cache = require '../../lib/cache'
 Backbone = require 'backbone'
 
 describe 'cache lib', ->

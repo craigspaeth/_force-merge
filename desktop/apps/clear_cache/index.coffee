@@ -1,5 +1,5 @@
 express = require 'express'
-{ flushall } = require '../../../lib/cache'
+{ flushall } = require '../../lib/cache'
 
 app = module.exports = express()
 app.set 'views', __dirname

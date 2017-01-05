@@ -8,7 +8,7 @@ FairEvents = require '../../../collections/fair_events.coffee'
 InfoMenu = require '../info_menu.coffee'
 Articles = require '../../../collections/articles.coffee'
 Article = require '../../../models/article.coffee'
-cache = require '../../../../lib/cache'
+cache = require '../../../lib/cache'
 
 describe 'InfoMenu', ->
   beforeEach ->

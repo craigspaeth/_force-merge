@@ -1,5 +1,5 @@
 Q = require 'bluebird-q'
-cache = require '../../../lib/cache'
+cache = require '../../lib/cache'
 Auctions = require '../../collections/auctions'
 
 module.exports = class AuctionReminders
