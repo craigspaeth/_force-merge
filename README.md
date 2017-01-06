@@ -22,8 +22,8 @@ npm start
 
 ## TODO
 
-- Script to check Force & MG package.json dependencies and updates this package.json + installs
-- Add Danger/CONTRIBUTING/etc. back in
-- Set up tests with Semaphore
-- Create a merged S3 bucket that deploys assets to the same place, and copies everything else from Force product & MG production to the same place
+- Create a merged S3 bucket that deploys assets to the same place, and copies everything else from Force production & MG production to the same place
 - Refactor mobile redirect code
+- Set up tests with CircleCI
+- Set up deployment with Heroku pipelines (figure out asset story)
+- Add Danger/CONTRIBUTING/etc. back in

@@ -6,6 +6,11 @@ git clone git@github.com:artsy/microgravity.git mobile
 rm -rf desktop/.git
 rm -rf mobile/.git
 
+# Merge package.json files & install modules
+node ./merge/package.js
+rm -rf node_modules
+npm install
+
 # Remove the duplicated config/project files
 rm -rf ./desktop/CONTRIBUTING.md
 rm -rf ./desktop/Dangerfile
