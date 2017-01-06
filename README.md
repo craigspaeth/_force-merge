@@ -13,11 +13,17 @@ npm i
 npm start
 ```
 
+# Deploying to staging/production
+
+- Set `APP_URL` `ARTSY_URL` `MOBILE_URL` to (staging.)artsy.net
+- Set `CDN_URL` to the right place
+- Set `COMMIT_HASH` to the latest short commit (done in bucket assets)
+- Set all of the `FAKE123123123` keys to real things
+
 ## TODO
 
 - Script to check Force & MG package.json dependencies and updates this package.json + installs
-- Deploy to separate heroku and get config straight
-- Swap DNS to point to new app
-- Add Danger back in
+- Add Danger/CONTRIBUTING/etc. back in
 - Set up tests with Semaphore
-- Merge S3 buckets between MG & Force
+- Create a merged S3 bucket that deploys assets to the same place, and copies everything else from Force product & MG production to the same place
+- Refactor mobile redirect code
