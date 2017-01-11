@@ -9,6 +9,7 @@ rm -rf mobile/.git
 # Merge package.json files & install modules
 npm i package-merge
 node ./merge/package.js
+npm i dotenv --save
 rm -rf node_modules
 npm i
 

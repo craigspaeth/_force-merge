@@ -1,3 +1,6 @@
+//
+// Merges the Force and Microgravity package.json files
+//
 const merge = require('package-merge')
 const fs = require('fs')
 const path = require('path')
@@ -23,9 +26,11 @@ const basePackage = {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "merge": "sh merge/main.sh",
-    "start": "npm run merge && node  -r dotenv/config .",
+    "start": "node -r dotenv/config .",
     "push": "npm run merge && git add . && git commit -a -m 'deploying' && git push --force git@heroku.com:force-merge.git",
-    "deploy": "ezel-assets && bucket-assets && heroku config:set ASSET_MANIFEST=$(cat manifest.json) && git push --force heroku"
+    "assets": "ezel-assets mobile/assets/ & ezel-assets desktop/assets/",
+    "bucket": "bucket-assets && heroku config:set ASSET_MANIFEST=$(cat manifest.json)",
+    "deploy": "npm run assets && npm run bucket && git push --force heroku"
   },
   "license": "MIT",
 }

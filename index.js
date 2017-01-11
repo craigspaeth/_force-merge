@@ -22,6 +22,7 @@ app.use((...args) => {
   )
   isPhone ? mobile(...args) : desktop(...args)
 })
+app.use(express.static(__dirname + '/public'))
 
 // Attempt to connect to Redis. If it fails, no worries, the app will move on
 // without caching.
