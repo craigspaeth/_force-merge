@@ -1,5 +1,19 @@
 @require '../stylus_lib'
 
+.payoff-content
+  &__header
+    text-align center
+    line-height 2.3em
+    &__headline
+      font-size 30px
+  &__content
+    margin-left 300px
+    .arbv-follow-search-container
+      width 600px
+  &__done
+    margin-left 300px
+    width 600px
+
 .artist-page-cta.fullscreen
   height calc(100%)
   .main-layout-container
@@ -56,7 +70,15 @@
       font-size 16px
       vertical-align middle
       &:after
-        left 60%
+        left 40%
+        font-size 30px
+        content '▲'
+        text-shadow 0 -5px 8px rgba(200,200,200,0.3)
+        color white
+        z-index 999
+        transform scaleY(0.6)
+        margin 7px 0 0 0
+        border 0
      &__count
       avant-garde()
       font-size 10px
@@ -72,10 +94,12 @@
       color white
       text-align center
     &__items
-      box-shadow 2px -4px 20px rgba(0,0,0,0.3)
+      box-shadow 2px 0px 20px rgba(220,220,220,0.3)
       background-color white
       width 300px
       height 200px
+      margin-left -150px
+
       &:after
         display block
         position absolute
@@ -121,6 +145,28 @@
     float right
     width 500px
     margin-top 50px
+    .auth-signup-facebook
+      background-color #38409E
+      width 500px
+    button
+      margin-bottom 20px
+    h2
+      width 100%
+      text-align center
+      border-bottom 1px solid gray-darker-color
+      line-height 0.1em
+      margin 10px 0 20px
+      span 
+        avant-garde()
+        font-size 11px
+        color gray-darker-color
+        background #fff
+        padding 0 10px
+    #auth-footer
+      text-align center
+      p
+        opacity 0.8
+        color gray-darkest-color
   &__close
     position absolute
     right 20px
