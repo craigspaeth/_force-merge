@@ -20,7 +20,7 @@ mixin video(video)
       != embed(video.url, { query: { title: 0, portrait: 0, badge: 0, byline: 0, showinfo: 0, rel: 0, controls: 2, modestbranding: 1, iv_load_policy: 3, color: "E5E5E5" } })
 
 mixin image(image)
-  figure.article-section-image
+  figure.article-section-image( data-layout="#{image.layout ? image.layout : 'overflow_fillwidth'}" )
     img( src=resize(image.url, { width: 1100 }) )
     if image.caption
       figcaption!= image.caption
@@ -105,6 +105,12 @@ mixin embed(section)
   .article-embed-container
     iframe(src=section.url height=section.height data-d-height=section.height data-m-height=section.mobile_height scrolling='no' frameborder='0')
 
+mixin printArtistName(artist)
+  if artist.slug
+    a(href='/artist/' + artist.slug )= artist.name
+  else
+    |= artist.name
+
 mixin artwork(artwork)
   li( data-id=artwork.id )
     figure.artwork-item
@@ -113,12 +119,12 @@ mixin artwork(artwork)
           .artwork-item-image
             img( src=artwork.image )
       figcaption.artwork-item-caption
-        if artwork.artist && artwork.artist.name
-          p.artwork-item-artist.artwork-item-overflow
-            if artwork.artist.slug
-              a(href='/artist/' + artwork.artist.slug )= artwork.artist.name
-            else
-              |= artwork.artist.name
+        p.artwork-item-artist.artwork-item-overflow
+          if artwork.artists
+            for artist, i in artwork.artists
+              +printArtistName(artist)
+          else if artwork.artist && artwork.artist.name
+            +printArtistName(artwork.artist)
         if artwork.title
           p.artwork-item-title.artwork-item-overflow
             if artwork.slug

@@ -19,3 +19,5 @@ mobile/public/assets
 dump.rdb
 /node_modules
 coffeelint.json
+manifest.json
+/tmp

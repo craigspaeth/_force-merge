@@ -105,7 +105,8 @@ module.exports =
   GEODATA_URL: 'http://artsy-geodata.s3-website-us-east-1.amazonaws.com'
   EMAIL_SIGNUP_IMAGES_ID: null
   IP_BLACKLIST: ''
-  CRITEO_ACCOUNT_NUMBER: 'ArtsyUS;7766801;7766802;28539'
+  CRITEO_AUCTIONS_ACCOUNT_NUMBER: 'ArtsyUS;7766801;7766802;28539'
+  CRITEO_ARTWORKS_ACCOUNT_NUMBER: 'Artsy-InquiryCampaign;7780744;7780745;35250'
   APPLY_URL: 'http://apply.artsy.net'
   PERSONALIZED_HOMEPAGE_BUCKETS: ''
   PC_ARTSY_CHANNEL: '5759e508b5989e6f98f77999'
@@ -123,6 +124,7 @@ module.exports =
   EOY_2016_ARTICLE: null
   EOY_2016_TEASER: 'https://artsy-vanity-files-production.s3.amazonaws.com/documents/year-in-art-teaser.html'
   EOY_2016_SLUGS: ''
+  SHOW_ARTIST_CTA_CODE: null
 
 # Override any values with env variables if they exist.
 # You can set JSON-y values for env variables as well such as "true" or

@@ -7,9 +7,10 @@ rm -rf desktop/.git
 rm -rf mobile/.git
 
 # Merge package.json files & install modules
+npm i package-merge
 node ./merge/package.js
 rm -rf node_modules
-npm install
+npm i
 
 # Remove the duplicated config/project files
 rm -rf ./desktop/CONTRIBUTING.md

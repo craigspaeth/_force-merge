@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "merge": "sh merge/main.sh",
     "start": "npm run merge && node  -r dotenv/config .",
-    "deploy": "npm run merge && git add . && git commit -a -m 'deploying' && git push --force git@heroku.com:force-merge.git"
+    "push": "npm run merge && git add . && git commit -a -m 'deploying' && git push --force git@heroku.com:force-merge.git",
+    "deploy": "ezel-assets && bucket-assets && heroku config:set ASSET_MANIFEST=$(cat manifest.json) && git push --force heroku"
   },
   "dependencies": {
     "accounting": "^0.4.1",
@@ -27,7 +28,7 @@
     "bluebird": "^3.4.6",
     "bluebird-q": "^2.1.1",
     "body-parser": "^1.14.1",
-    "bucket-assets": "^0.2.11",
+    "bucket-assets": "^1.0.2",
     "coffee-script": "^1.11.1",
     "cookie-parser": "^1.4.0",
     "cookie-session": "^2.0.0-alpha.1",

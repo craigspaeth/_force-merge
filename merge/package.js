@@ -25,8 +25,7 @@ const basePackage = {
     "merge": "sh merge/main.sh",
     "start": "npm run merge && node  -r dotenv/config .",
     "push": "npm run merge && git add . && git commit -a -m 'deploying' && git push --force git@heroku.com:force-merge.git",
-    "deploy-assets": "ezel-assets && manifest=`bucket-assets --manifest-to-stdout true --bucket force-merge-staging` && heroku config:set ASSET_MANIFEST=$manifest"
-    "deploy": "npm run deploy-assets && git push --force git@heroku.com:force-merge-staging.git"
+    "deploy": "ezel-assets && bucket-assets && heroku config:set ASSET_MANIFEST=$(cat manifest.json) && git push --force heroku"
   },
   "license": "MIT",
 }

@@ -31,6 +31,7 @@ describe 'ArticleView', ->
       @ArticleView.__set__ 'CurrentUser', fabricate 'user'
       @fillwidth = sinon.spy(@ArticleView::, 'fillwidth')
       @imgsFillContainer = sinon.spy(@ArticleView::, 'imgsFillContainer')
+      @setupMaxImageHeights = sinon.spy(@ArticleView::, 'setupMaxImageHeights')
       @resetImageSetPreview = sinon.spy(@ArticleView::, 'resetImageSetPreview')
       stubChildClasses @ArticleView, this,
         ['initCarousel']
@@ -68,10 +69,10 @@ describe 'ArticleView', ->
                     name: "October Gallery",
                     slug: "october-gallery"
                   },
-                  artist: {
+                  artists: [{
                     name: "Govinda Sah 'Azad'",
                     slug: "govinda-sah-azad"
-                  }
+                  }]
                 },{
                   type: 'artwork'
                   id: '5321b71c275b24bcaa0001a5'
@@ -83,10 +84,10 @@ describe 'ArticleView', ->
                     name: "October Gallery",
                     slug: "october-gallery"
                   },
-                  artist: {
+                  artists: [{
                     name: "Govinda Sah 'Azad'",
                     slug: "govinda-sah-azad"
-                  }
+                  }]
                 }
               ]
             }
@@ -182,6 +183,10 @@ describe 'ArticleView', ->
     it 'calls fillwidth on artworks', ->
       @view.refreshWindowSize()
       @fillwidth.callCount.should.be.above 1
+
+    it 'calls setupMaxImageHeights on artworks', ->
+      @view.refreshWindowSize()
+      @setupMaxImageHeights.callCount.should.be.above 1
 
   describe '#embedMobileHeight', ->
 
