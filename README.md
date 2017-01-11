@@ -22,8 +22,8 @@ npm start
 
 ## TODO
 
-- Create a merged S3 bucket that deploys assets to the same place, and copies everything else from Force production & MG production to the same place
+- Script that copies over certain folders from Force's S3 bucket to a new bucket
 - Refactor mobile redirect code
 - Set up tests with CircleCI
-- Set up deployment with Heroku pipelines (figure out asset story)
+- Set up deployment
 - Add Danger/CONTRIBUTING/etc. back in
