@@ -13,6 +13,11 @@ npm i dotenv --save
 rm -rf node_modules
 npm i
 
+# Sync S3 buckets
+rm -rf tmp
+mkdir tmp
+npm i s3
+
 # Remove the duplicated config/project files
 rm -rf ./desktop/CONTRIBUTING.md
 rm -rf ./desktop/Dangerfile

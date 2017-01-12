@@ -16,8 +16,7 @@ npm start
 # Deploying to staging/production
 
 - Set `APP_URL` `ARTSY_URL` `MOBILE_URL` to (staging.)artsy.net
-- Set `CDN_URL` to the right place
-- Set `COMMIT_HASH` to the latest short commit (done in bucket assets)
+- Set `CDN_URL` `APPLICATION_NAME` and `S3_` config to new bucket
 - Set all of the `FAKE123123123` keys to real things
 
 ## TODO

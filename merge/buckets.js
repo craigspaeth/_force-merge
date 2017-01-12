@@ -1,7 +1,8 @@
 //
 // Copies over files from the Force & Microgravity S3 buckets into a new bucket
 //
-const knox = require('knox')
+const s3 = require('s3')
+
 const {
   S3_KEY,
   S3_SECRET,
@@ -10,20 +11,42 @@ const {
   OLD_S3_SECRET
 } = process.env
 
-const force = knox.createClient({
-  key: OLD_S3_KEY,
-  secret: OLD_S3_SECRET,
-  bucket: 'force-production'
+const folders = [
+  'video',
+  'sounds',
+  'pdf',
+  'json',
+  'javascripts',
+  'institution-partnerships',
+  'images',
+  'icons',
+  'gallery-partnerships',
+  'fonts',
+  'data',
+  'auction-partnerships',
+  'about'
+]
+
+const old = s3.createClient({
+  s3Options: {
+    accessKeyId: OLD_S3_KEY,
+    secretAccessKey: OLD_S3_SECRET
+  }
 })
 
-const microgravity = knox.createClient({
-  key: OLD_S3_KEY,
-  secret: OLD_S3_SECRET,
-  bucket: 'microgravity-production'
+const merged = s3.createClient({
+  s3Options: {
+    accessKeyId: S3_KEY,
+    secretAccessKey: S3_SECRET
+  }
 })
 
-const merged = knox.createClient({
-  key: S3_KEY,
-  secret: S3_BUCKET,
-  bucket: S3_BUCKET
+const pdf = old.downloadDir({
+  localDir: 'tmp',
+  s3Params: {
+    Prefix: 'pdf',
+    Bucket: 'force-staging'
+  }
 })
+pdf.on('progress', () => console.log('...', pdf.progressAmount))
+pdf.on('end', () => console.log('done'))
