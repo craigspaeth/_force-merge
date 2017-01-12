@@ -27,7 +27,6 @@ const basePackage = {
     "test": "echo \"Error: no test specified\" && exit 1",
     "merge": "sh merge/main.sh",
     "start": "node -r dotenv/config .",
-    "push": "npm run merge && git add . && git commit -a -m 'deploying' && git push --force git@heroku.com:force-merge.git",
     "assets": "ezel-assets mobile/assets/ & ezel-assets desktop/assets/",
     "bucket": "bucket-assets && heroku config:set ASSET_MANIFEST=$(cat manifest.json)",
     "deploy": "npm run assets && npm run bucket && git push --force heroku master"

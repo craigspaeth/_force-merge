@@ -13,16 +13,9 @@ npm i
 npm start
 ```
 
-# Deploying to staging/production
-
-- Set `APP_URL` `ARTSY_URL` `MOBILE_URL` to (staging.)artsy.net
-- Set `CDN_URL` `APPLICATION_NAME` and `S3_` config to new bucket
-- Set all of the `FAKE123123123` keys to real things
-
 ## TODO
 
-- Script that copies over certain folders from Force's S3 bucket to a new bucket
 - Refactor mobile redirect code
 - Set up tests with CircleCI
-- Set up deployment
+- Set up staging/production deployment
 - Add Danger/CONTRIBUTING/etc. back in
