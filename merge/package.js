@@ -24,7 +24,7 @@ const basePackage = {
     ]
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r should --compilers coffee:coffee-script/register,js:babel-core/register -t 30000 $(find desktop mobile -regex '.*/test/[^/]*.coffee')",
     "merge": "sh merge/main.sh",
     "start": "node -r dotenv/config .",
     "assets": "ezel-assets mobile/assets/ & ezel-assets desktop/assets/",
