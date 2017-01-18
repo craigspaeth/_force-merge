@@ -4,10 +4,16 @@ const newrelic = require('artsy-newrelic')
 const artsyXapp = require('artsy-xapp')
 const desktop = require('./desktop')
 const mobile = require('./mobile')
+const mobileMiddleware = require('./desktop/lib/middleware/redirect_mobile.coffee')
 const cache = require('./lib/cache')
 
 const app = express()
 const { API_URL, CLIENT_ID, CLIENT_SECRET, PORT } = process.env
+
+const isResponsive = (url) => {
+  const stack = mobileMiddleware.stack.slice(0, -1)
+  return stack.filter((route) => route.regexp.test(url)).length > 0
+}
 
 app.use(newrelic)
 app.use((...args) => {
@@ -20,7 +26,7 @@ app.use((...args) => {
     (ua.match(/BB10/i)) ||
     (ua.match(/BlackBerry/i))
   )
-  isPhone ? mobile(...args) : desktop(...args)
+  isPhone && !isResponsive(req.url) ? mobile(...args) : desktop(...args)
 })
 app.use(express.static(__dirname + '/public'))
 
