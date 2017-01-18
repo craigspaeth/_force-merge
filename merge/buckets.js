@@ -66,7 +66,8 @@ const upload = () => {
     const download = merged.uploadDir({
       localDir: 'tmp/bucket',
       s3Params: {
-        Bucket: S3_BUCKET
+        Bucket: S3_BUCKET,
+        ACL: 'public-read'
       }
     }).on('error', reject).on('end', resolve)
   })

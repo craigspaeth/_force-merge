@@ -24,12 +24,13 @@ const basePackage = {
     ]
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r should --compilers coffee:coffee-script/register,js:babel-core/register -t 30000 $(find desktop mobile -regex '.*/test/[^/]*.coffee')",
     "merge": "sh merge/main.sh",
     "start": "node -r dotenv/config .",
     "assets": "ezel-assets mobile/assets/ & ezel-assets desktop/assets/",
     "bucket": "bucket-assets && heroku config:set ASSET_MANIFEST=$(cat manifest.json)",
-    "deploy": "npm run assets && npm run bucket && git push --force heroku master"
+    "gitpush": "git add . && git commit -a -m 'deploying' && git push --force heroku master",
+    "deploy": "npm run assets && npm run bucket && npm run gitpush"
   },
   "license": "MIT",
 }

@@ -1,4 +1,4 @@
-echo "Download Force & Microgravity into desktop and mobile folders..."
+echo "Downloading Force & Microgravity into desktop and mobile folders..."
 rm -rf ./desktop
 rm -rf ./mobile
 git clone git@github.com:artsy/force.git desktop

@@ -15,7 +15,6 @@ npm start
 
 ## TODO
 
-- Refactor mobile redirect code
-- Set up tests with CircleCI
-- Set up staging/production deployment
+- Get tests passing
+- Set up CircleCI and staging/production deployment
 - Add Danger/CONTRIBUTING/etc. back in
