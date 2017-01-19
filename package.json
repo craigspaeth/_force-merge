@@ -81,7 +81,7 @@
     "places": "git://github.com/artsy/places.git",
     "popover": "^2.4.0",
     "qs": "^6.3.0",
-    "redis": "^2.6.3",
+    "redis": "^2.6.5",
     "referer-parser": "0.0.3",
     "sailthru-client": "^3.0.0",
     "serve-favicon": "^2.3.0",

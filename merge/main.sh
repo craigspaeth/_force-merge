@@ -9,7 +9,7 @@ rm -rf mobile/.git
 echo "Merging package.json files and installing modules..."
 npm i package-merge
 node ./merge/package.js
-npm i dotenv redis@2.6.3 --save
+npm i dotenv --save
 npm i rewire@2.2.0 --save-dev
 rm -rf node_modules
 npm i

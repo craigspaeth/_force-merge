@@ -9,25 +9,21 @@
 #
 _ = require 'underscore'
 redis = require 'redis'
-{ NODE_ENV, OPENREDIS_URL, DEFAULT_CACHE_TIME } = process.env
+{ NODE_ENV, REDIS_URL, DEFAULT_CACHE_TIME } = process.env
 
-if OPENREDIS_URL
-  red = require("url").parse(OPENREDIS_URL)
-  @client = redis.createClient(red.port, red.hostname)
+if REDIS_URL
+  @client = redis.createClient REDIS_URL
 else
   @client = null
 
 # Setup redis client
-@setup = (callback) ->
-  return callback() if NODE_ENV is "test" or not OPENREDIS_URL
-  red = require("url").parse(OPENREDIS_URL)
-  @client = redis.createClient(red.port, red.hostname)
+@setup = (callback) =>
+  return callback() if NODE_ENV is "test" or not REDIS_URL
   @client.on 'error', _.once (err) =>
     console.warn 'REDIS_CONNECTION_ERROR', err
     @client = null
     callback()
   @client.on 'ready', _.once callback
-  @client.auth(red.auth.split(":")[1]) if @client and red.auth
 
 # Convenience for setting a value in the cache with an expiry.
 #
