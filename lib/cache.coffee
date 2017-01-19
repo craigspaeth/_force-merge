@@ -10,7 +10,12 @@
 _ = require 'underscore'
 redis = require 'redis'
 { NODE_ENV, OPENREDIS_URL, DEFAULT_CACHE_TIME } = process.env
-@client = null
+
+if OPENREDIS_URL
+  red = require("url").parse(OPENREDIS_URL)
+  @client = redis.createClient(red.port, red.hostname)
+else
+  @client = null
 
 # Setup redis client
 @setup = (callback) ->
