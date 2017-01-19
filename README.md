@@ -15,6 +15,5 @@ npm start
 
 ## TODO
 
-- Get tests passing
-- Set up CircleCI and staging/production deployment
-- Add Danger/CONTRIBUTING/etc. back in
+- Set up continous integration/deployment with CircleCI
+- Get Danger/CONTRIBUTING/README/etc. back in order

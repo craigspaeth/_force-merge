@@ -9,7 +9,8 @@ rm -rf mobile/.git
 echo "Merging package.json files and installing modules..."
 npm i package-merge
 node ./merge/package.js
-npm i dotenv --save
+npm i dotenv redis@2.6.3 --save
+npm i rewire@2.2.0 --save-dev
 rm -rf node_modules
 npm i
 
@@ -34,6 +35,7 @@ rm -rf ./desktop/Procfile.dev
 rm -rf ./desktop/README.md
 rm -rf ./desktop/.env.oss
 rm -rf ./desktop/.gitignore
+rm -rf ./desktop/test/mocha.opts
 rm -rf ./mobile/CONTRIBUTING.md
 rm -rf ./mobile/Dangerfile
 rm -rf ./mobile/doc
@@ -45,6 +47,7 @@ rm -rf ./mobile/Procfile
 rm -rf ./mobile/README.md
 rm -rf ./mobile/.env.oss
 rm -rf ./mobile/.gitignore
+rm -rf ./mobile/test/mocha.opts
 
 echo "Rewriting relative requires into node modules a directory back..."
 find . -type f -name '*.coffee' -exec sed -i '' s%../node_modules%../../node_modules% {} +
@@ -58,6 +61,7 @@ echo "module.exports = app = setup express()" >> ./desktop/index.coffee
 echo "express = require('express')" > ./mobile/index.coffee
 echo "setup = require './lib/setup'" >> ./mobile/index.coffee
 echo "module.exports = app = setup express()" >> ./mobile/index.coffee
+echo "app.listen(process.env.PORT, -> process.send? 'listening') if module is require.main" >> ./mobile/index.coffee
 
 echo "Replacing the cache libs with the root cache lib..."
 echo "module.exports = require '../../lib/cache'" > ./desktop/lib/cache.coffee

@@ -24,7 +24,8 @@ const basePackage = {
     ]
   },
   "scripts": {
-    "test": "mocha -r should --compilers coffee:coffee-script/register,js:babel-core/register -t 30000 $(find desktop mobile -regex '.*/test/[^/]*.coffee')",
+    "mocha": "mocha -r should --compilers coffee:coffee-script/register,js:babel-core/register -t 30000",
+    "test": "npm run mocha $(find desktop/test -name '*.coffee') && npm run mocha $(find desktop/components/*/test -name '*.coffee') && npm run mocha $(find desktop/components/**/*/test -name '*.coffee') && npm run mocha $(find desktop/apps/*/test -name '*.coffee') && npm run mocha $(find desktop/apps/*/**/*/test -name '*.coffee') && npm run mocha $(find mobile/test -name '*.coffee') && npm run mocha $(find mobile/components/*/test -name '*.coffee') && npm run mocha $(find mobile/components/**/*/test -name '*.coffee') && npm run mocha $(find mobile/apps/*/test -name '*.coffee') && npm run mocha $(find mobile/apps/*/**/*/test -name '*.coffee')",
     "merge": "sh merge/main.sh",
     "start": "node -r dotenv/config .",
     "assets": "ezel-assets mobile/assets/ & ezel-assets desktop/assets/",
